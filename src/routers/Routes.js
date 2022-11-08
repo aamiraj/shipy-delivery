@@ -3,6 +3,10 @@ import Main from "../layout/Main/Main";
 import ErrorPage from "../Pages/ErrrorPage/ErrorPage";
 import Home from "../Pages/Home/Home";
 import ServiceDetails from "../Pages/ServiceDetails/ServiceDetails";
+import LogIn from "../Pages/LogIn/LogIn";
+import Register from "../Pages/Register/Register";
+import MyReviews from "../Pages/MyReviews/MyReviews";
+import Blogs from "../Pages/Blogs/Blogs";
 
 const router = createBrowserRouter([
   {
@@ -20,19 +24,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/log-in",
-        element: <ServiceDetails />,
+        element: <LogIn />,
       },
       {
         path: "/register",
-        element: <ServiceDetails />,
+        element: <Register />,
       },
       {
         path: "/my-reviews",
-        element: <ServiceDetails />,
+        element: <MyReviews />,
       },
       {
         path: "/blogs",
-        element: <ServiceDetails />,
+        element: <Blogs />,
       },
     ],
   },
