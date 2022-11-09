@@ -88,16 +88,30 @@ const NavBar = () => {
                 ))}
               </ul>
             </li>
-            <li>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? "text-amber-500" : undefined
-                }
-                to="/my-reviews"
-              >
-                My Reviews
-              </NavLink>
-            </li>
+            {user?.uid && (
+              <>
+                <li>
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? "text-amber-500" : undefined
+                    }
+                    to="/my-reviews"
+                  >
+                    My Reviews
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? "text-amber-500" : undefined
+                    }
+                    to="/add-services"
+                  >
+                    Add Services
+                  </NavLink>
+                </li>
+              </>
+            )}
           </ul>
         </div>
         <Link to="/">
