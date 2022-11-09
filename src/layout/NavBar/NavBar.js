@@ -1,9 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logo-shipy.png";
+import { AuthContext } from "../../contexts/UserContext";
+import { FaUserAlt } from "react-icons/fa";
 
 const NavBar = () => {
+  const { user, logOut } = useContext(AuthContext);
   const [services, setServices] = useState([]);
+  console.log(user);
+  const handleLogOut = () => {
+    logOut()
+      .then()
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
   useEffect(() => {
     fetch("http://localhost:5000/services")
       .then((res) => res.json())
@@ -100,9 +112,29 @@ const NavBar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <Link to="/log-in" className="btn bg-my-primary-outline">
-          Log In
-        </Link>
+        {user?.uid ? (
+          <div
+            className="flex justify-center items-center tooltip tooltip-left"
+            data-tip={user?.email}
+          >
+            {user?.photoURL ? (
+              <img
+                className="w-8 h-8 rounded-full mx-4"
+                src={user?.photoURL}
+                alt="profile-pic"
+              />
+            ) : (
+              <FaUserAlt className="w-8 h-8 rounded-full mx-4" />
+            )}
+            <button onClick={handleLogOut} className="btn btn-outline">
+              Log Out
+            </button>
+          </div>
+        ) : (
+          <Link to="/log-in" className="btn bg-my-primary-outline">
+            Log In
+          </Link>
+        )}
       </div>
     </div>
   );

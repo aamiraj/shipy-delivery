@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+//import { FiArrowRight } from "react-icons/fi";
 
 const Service = (props) => {
   const { _id, name, img, description } = props.service;
   return (
     <div>
-      <div className="card bg-base-100 shadow-xl image-full h-full">
+      <div className="card bg-base-100 shadow-xl h-full">
         <figure>
           <img className="object-cover" src={img} alt="Shoes" />
         </figure>
