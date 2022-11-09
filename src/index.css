@@ -15,3 +15,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.bg-my-primary{
+  background-color: #fe181a;
+}
+
+.bg-my-primary-outline{
+  color: #fe181a;
+  background-color: transparent;
+  border: 1px solid #fe181a;
+}
+
+.bg-my-primary-outline:hover{
+  color: #fff;
+  background-color: #fe181a;
+  border: 1px solid #fe181a;
+}
+
+.color-my-primary{
+  color: #fe181a;
+}
+
+.color-my-secondary{
+  color: #00334a;
+}

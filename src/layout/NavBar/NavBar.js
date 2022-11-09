@@ -8,12 +8,12 @@ const NavBar = () => {
     fetch("http://localhost:5000/services")
       .then((res) => res.json())
       .then((data) => setServices(data));
-  });
+  }, []);
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 shadow-lg sticky top-0 z-30">
       <div className="navbar-start">
         <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost lg:hidden">
+          <label tabIndex={0} className="color-my-primary lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -44,12 +44,13 @@ const NavBar = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
+                  color="#fe181a"
                   viewBox="0 0 24 24"
                 >
                   <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
                 </svg>
               </Link>
-              <ul className="p-2">
+              <ul className="p-2 z-30 bg-white">
                 {services.map((serve) => (
                   <li key={serve._id.toString()}>
                     <Link to={`/services/${serve._id}`}>{serve.name}</Link>
@@ -63,7 +64,7 @@ const NavBar = () => {
           </ul>
         </div>
         <Link to="/" className="btn btn-ghost normal-case text-xl">
-          <img src={Logo} alt="shipy" />
+          <img className="w-32" src={Logo} alt="shipy" />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -79,12 +80,13 @@ const NavBar = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
                 height="20"
+                color="#fe181a"
                 viewBox="0 0 24 24"
               >
                 <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
               </svg>
             </Link>
-            <ul className="p-2">
+            <ul className="p-2 z-30 bg-white">
               {services.map((serve) => (
                 <li key={serve._id.toString()}>
                   <Link to={`/services/${serve._id}`}>{serve.name}</Link>
@@ -98,7 +100,7 @@ const NavBar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <Link to="/log-in" className="btn">
+        <Link to="/log-in" className="btn bg-my-primary-outline">
           Log In
         </Link>
       </div>
