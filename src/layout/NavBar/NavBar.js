@@ -7,7 +7,7 @@ import { FaUserAlt } from "react-icons/fa";
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [services, setServices] = useState([]);
-  console.log(user);
+  //console.log(user);
   const handleLogOut = () => {
     logOut()
       .then()
