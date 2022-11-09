@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Logo from "../../assets/logo-shipy.png";
 import { AuthContext } from "../../contexts/UserContext";
 import { FaUserAlt } from "react-icons/fa";
@@ -46,10 +46,21 @@ const NavBar = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <Link to="/home">Home</Link>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "text-amber-500" : undefined
+                }
+                to="/home"
+              >
+                Home
+              </NavLink>
             </li>
             <li tabIndex={0}>
-              <Link to="/services" className="justify-between">
+              <NavLink
+                to="/services"
+                className={`justify-between ${({ isActive }) =>
+                  isActive ? "text-amber-500" : undefined}`}
+              >
                 Services
                 <svg
                   className="fill-current"
@@ -61,31 +72,57 @@ const NavBar = () => {
                 >
                   <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
                 </svg>
-              </Link>
+              </NavLink>
               <ul className="p-2 z-30 bg-white">
                 {services.map((serve) => (
                   <li key={serve._id.toString()}>
-                    <Link to={`/services/${serve._id}`}>{serve.name}</Link>
+                    <NavLink
+                      className={({ isActive }) =>
+                        isActive ? "text-amber-500" : undefined
+                      }
+                      to={`/services/${serve._id}`}
+                    >
+                      {serve.name}
+                    </NavLink>
                   </li>
                 ))}
               </ul>
             </li>
             <li>
-              <Link to="/my-reviews">My Reviews</Link>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "text-amber-500" : undefined
+                }
+                to="/my-reviews"
+              >
+                My Reviews
+              </NavLink>
             </li>
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost normal-case text-xl">
+        <Link to="/">
           <img className="w-32" src={Logo} alt="shipy" />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0">
           <li>
-            <Link to="/home">Home</Link>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "text-amber-500" : undefined
+              }
+              to="/home"
+            >
+              Home
+            </NavLink>
           </li>
           <li tabIndex={0}>
-            <Link to="/services">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "text-amber-500" : undefined
+              }
+              to="/services"
+            >
               Services
               <svg
                 className="fill-current"
@@ -97,18 +134,46 @@ const NavBar = () => {
               >
                 <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
               </svg>
-            </Link>
+            </NavLink>
             <ul className="p-2 z-30 bg-white">
               {services.map((serve) => (
                 <li key={serve._id.toString()}>
-                  <Link to={`/services/${serve._id}`}>{serve.name}</Link>
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? "text-amber-500" : undefined
+                    }
+                    to={`/services/${serve._id}`}
+                  >
+                    {serve.name}
+                  </NavLink>
                 </li>
               ))}
             </ul>
           </li>
-          <li>
-            <Link to="/my-reviews">My Reviews</Link>
-          </li>
+          {user?.uid && (
+            <>
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "text-amber-500" : undefined
+                  }
+                  to="/my-reviews"
+                >
+                  My Reviews
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "text-amber-500" : undefined
+                  }
+                  to="/add-services"
+                >
+                  Add Services
+                </NavLink>
+              </li>
+            </>
+          )}
         </ul>
       </div>
       <div className="navbar-end">
@@ -131,9 +196,9 @@ const NavBar = () => {
             </button>
           </div>
         ) : (
-          <Link to="/log-in" className="btn bg-my-primary-outline">
+          <NavLink to="/log-in" className="btn bg-my-primary-outline">
             Log In
-          </Link>
+          </NavLink>
         )}
       </div>
     </div>

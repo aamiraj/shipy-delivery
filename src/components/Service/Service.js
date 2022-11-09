@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-//import { FiArrowRight } from "react-icons/fi";
+import "react-photo-view/dist/react-photo-view.css";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 
 const Service = (props) => {
   const { _id, name, img, description } = props.service;
@@ -8,7 +9,11 @@ const Service = (props) => {
     <div>
       <div className="card bg-base-100 shadow-xl h-full">
         <figure>
-          <img className="object-cover" src={img} alt="Shoes" />
+          <PhotoProvider>
+            <PhotoView src={img}>
+              <img className="object-cover" src={img} alt="services" />
+            </PhotoView>
+          </PhotoProvider>
         </figure>
         <div className="card-body">
           <h2 className="card-title">{name}</h2>
