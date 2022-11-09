@@ -11,7 +11,7 @@ const Service = (props) => {
         </figure>
         <div className="card-body">
           <h2 className="card-title">{name}</h2>
-          <p>{`${description.substr(0, 100)} ...`}</p>
+          <p className="text-justify">{`${description.substr(0, 100)} ...`}</p>
           <div className="card-actions justify-end">
             <Link to={`/services/${_id}`} className="btn bg-my-primary-outline">
               Go Details

@@ -39,3 +39,11 @@ code {
 .color-my-secondary{
   color: #00334a;
 }
+
+.footer-link{
+  color: #00334a;
+}
+
+.footer-link:hover{
+  color: #fe181a;
+}

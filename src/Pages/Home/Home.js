@@ -6,6 +6,8 @@ import Carousel1 from "../../assets/images/1.jpg";
 import Carousel2 from "../../assets/images/2.jpg";
 import Carousel3 from "../../assets/images/3.webp";
 import Service from "../../components/Service/Service";
+import Stat from "../../components/Stats/Stats";
+import Featured from "../../components/Featured/Featured";
 
 const Home = () => {
   const services = useLoaderData();
@@ -111,15 +113,26 @@ const Home = () => {
         </Carousel>
       </div>
       {/* carousel section end here */}
+      <div>
+        <h1 className="text-4xl font-bold p-4 text-center">Featured</h1>
+        <Featured service={services[0]}></Featured>
+      </div>
+
       <div id="services" className="w-11/12 mx-auto my-8">
         <h1 className="text-4xl font-bold p-4 text-center">
           Services We Provide
         </h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-8">
           {services.map((serve) => (
             <Service key={serve._id} service={serve}></Service>
           ))}
         </div>
+        <Link className=" btn bg-my-primary-outline" to="/services">
+          See All
+        </Link>
+      </div>
+      <div>
+        <Stat></Stat>
       </div>
     </>
   );
