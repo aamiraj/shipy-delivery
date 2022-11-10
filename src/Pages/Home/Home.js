@@ -8,9 +8,11 @@ import Carousel3 from "../../assets/images/3.webp";
 import Service from "../../components/Service/Service";
 import Stat from "../../components/Stats/Stats";
 import Featured from "../../components/Featured/Featured";
+import useTitle from "../../hooks/useTitle";
 
 const Home = () => {
   const services = useLoaderData();
+  useTitle("Home");
 
   return (
     <>

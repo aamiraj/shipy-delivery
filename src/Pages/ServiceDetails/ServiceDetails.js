@@ -2,11 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import Review from "../../components/Review/Review";
 import { AuthContext } from "../../contexts/UserContext";
+import useTitle from "../../hooks/useTitle";
 
 const ServiceDetails = () => {
   const { _id, name, img, price, rating, description } = useLoaderData();
   const [reviews, setReviews] = useState([]);
   const { user } = useContext(AuthContext);
+
+  useTitle(name);
 
   useEffect(() => {
     fetch(`http://localhost:5000/reviews/${_id}`)
