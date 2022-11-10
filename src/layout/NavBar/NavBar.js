@@ -20,7 +20,7 @@ const NavBar = () => {
     fetch("http://localhost:5000/services")
       .then((res) => res.json())
       .then((data) => setServices(data));
-  }, []);
+  }, [services]);
   return (
     <div className="navbar bg-base-100 shadow-lg sticky top-0 z-30">
       <div className="navbar-start">

@@ -79,7 +79,7 @@ const ServiceDetails = () => {
         <p className="w-4/5 mx-auto text-start text-2xl font-bold">Reviews</p>
         <div className="w-4/5 mx-auto border-2 rounded p-4">
           {reviews.map((rev) => (
-            <Review key={rev._id} review={rev}></Review>
+            <Review key={rev._id.toString()} review={rev}></Review>
           ))}
           {user?.uid ? (
             <form onSubmit={handleSubmit} className="form-control">
