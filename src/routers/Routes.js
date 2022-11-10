@@ -10,6 +10,7 @@ import Blogs from "../Pages/Blogs/Blogs";
 import Services from "../Pages/Services/Services";
 import Private from "./PrivateRoute";
 import AddService from "../Pages/AddService/AddService";
+import EditReview from "../Pages/EditReview/EditReview";
 
 const router = createBrowserRouter([
   {
@@ -66,6 +67,12 @@ const router = createBrowserRouter([
       {
         path: "/blogs",
         element: <Blogs />,
+      },
+      {
+        path: "/edit-review/:id",
+        element: <EditReview></EditReview>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/edit-review/${params.id}`),
       },
     ],
   },

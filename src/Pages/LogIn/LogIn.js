@@ -64,7 +64,29 @@ const LogIn = () => {
 
   const handleGoogleLogIn = () => {
     googleLogIn()
-      .then(() => {})
+      .then((userCredential) => {
+        const user = userCredential.user;
+        const currentUser = {
+          email: user.email,
+        };
+
+        // get jwt token
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            //console.log(data);
+            // saved to local storage
+            localStorage.setItem("genius-token", data.token);
+            navigate(from, { replace: true });
+          });
+        // navigate(from, { replace: true });
+      })
       .catch((error) => {
         const errorMessage = error.message;
         setError(errorMessage);
@@ -73,7 +95,29 @@ const LogIn = () => {
 
   const handleGitHubLogIn = () => {
     gitHubLogIn()
-      .then(() => {})
+      .then((userCredential) => {
+        const user = userCredential.user;
+        const currentUser = {
+          email: user.email,
+        };
+
+        // get jwt token
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            //console.log(data);
+            // saved to local storage
+            localStorage.setItem("genius-token", data.token);
+            navigate(from, { replace: true });
+          });
+        // navigate(from, { replace: true });
+      })
       .catch((error) => {
         const errorMessage = error.message;
         setError(errorMessage);
@@ -82,7 +126,6 @@ const LogIn = () => {
 
   return (
     <div className="w-11/12 h-auto md:w-1/2 mx-auto border rounded-md shadow-lg hover:shadow-2xl p-5 my-8">
-      <p>you came from {from}</p>
       <h1 className="text-4xl font-bold text-center my-8">Log In</h1>
       <p>
         Haven't Registered yet?{" "}

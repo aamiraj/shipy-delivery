@@ -1,5 +1,6 @@
 import React from "react";
 import { FaRegTrashAlt, FaEdit } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Myreview = ({ myReview, services, deleteItem }) => {
   const { _id, review, serviceId, date, rating } = myReview;
@@ -35,9 +36,9 @@ const Myreview = ({ myReview, services, deleteItem }) => {
           >
             <FaRegTrashAlt></FaRegTrashAlt>
           </button>
-          <button className="btn btn-info w-1/2">
+          <Link to={`/edit-review/${_id}`} className="btn btn-info w-1/2">
             <FaEdit></FaEdit>
-          </button>
+          </Link>
         </div>
       </div>
       <div className="divider"></div>

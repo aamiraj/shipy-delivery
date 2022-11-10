@@ -40,7 +40,7 @@ const MyReviews = () => {
           className="rounded-full"
           src={user?.photoURL}
           style={{ width: "32px", height: "32px" }}
-          alt={user?.displayName || user.email}
+          alt="profile"
         />
         <p className="w-4/5 text-start text-2xl font-bold">
           {user?.displayName || user.email}
