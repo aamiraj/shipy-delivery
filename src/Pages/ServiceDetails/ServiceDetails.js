@@ -8,6 +8,8 @@ const ServiceDetails = () => {
   const { _id, name, img, price, rating, description } = useLoaderData();
   const [reviews, setReviews] = useState([]);
   const { user } = useContext(AuthContext);
+  //const location = useLocation();
+  //console.log(location);
 
   useTitle(name);
 
@@ -17,8 +19,42 @@ const ServiceDetails = () => {
       .then((data) => setReviews(data));
   }, [_id]);
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const review = form.review.value;
+    const rated = form.rated.value;
+    const d = new Date();
+    const dateISO = d.toISOString();
+
+    const newReview = {
+      name: user?.displayName,
+      email: user.email,
+      photo: user.photoURL,
+      review: review,
+      serviceId: _id,
+      rating: rated,
+      date: dateISO,
+    };
+
+    fetch(`http://localhost:5000/review`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newReview),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          const newReviews = [newReview, ...reviews];
+          setReviews(newReviews);
+        }
+      });
+    form.reset();
+  };
+
   return (
     <div>
+      {/* <Navigate state={{ from: location }} replace /> */}
       <div key="content-0" className="relative mx-auto w-full">
         <img
           className="block mx-auto w-full h-screen object-cover"
@@ -46,11 +82,23 @@ const ServiceDetails = () => {
             <Review key={rev._id} review={rev}></Review>
           ))}
           {user?.uid ? (
-            <form className="form-control">
+            <form onSubmit={handleSubmit} className="form-control">
               <textarea
                 className="textarea textarea-bordered h-24"
                 placeholder="Add your review"
+                name="review"
+                required
               ></textarea>
+              <input
+                className="input input-bordered my-2"
+                type="number"
+                name="rated"
+                id="rated"
+                placeholder="Rate this service out of 5"
+                min="1"
+                max="5"
+                required
+              />
               <button className="btn btn-ghost-outline my-4">
                 Add your review
               </button>

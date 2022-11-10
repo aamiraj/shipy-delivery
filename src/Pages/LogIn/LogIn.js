@@ -13,7 +13,7 @@ const LogIn = () => {
 
   useTitle("Log In");
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   let location = useLocation();
   let from = location.state?.from?.pathname || "/";
 
@@ -63,6 +63,7 @@ const LogIn = () => {
 
   return (
     <div className="w-11/12 h-auto md:w-1/2 mx-auto border rounded-md shadow-lg hover:shadow-2xl p-5 my-8">
+      <p>you came from {from}</p>
       <h1 className="text-4xl font-bold text-center my-8">Log In</h1>
       <p>
         Haven't Registered yet?{" "}
