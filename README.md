@@ -1,3 +1,32 @@
+# Shipy Online Delivery App
+
+Shipy Online Delivery, it's an online platform of delivery services. It includes percel delivery (P@P), Merchant Delivery, SME bussiness delivery, Line Haul, warehouse services and express delivery. We are excellent at giving our services. We are operaring over a year now, and we are getting good responses from our satiesfied users. We grow a lot since our start and we hope to keep our promises to our clients.
+
+Live site: [Shipy](https://shipy-delivery.web.app/)
+
+## Features
+
+- User freildly interface, easy to navigate and use.
+- App provides facility of various delivery options.
+- Delivery on a very affordable price.
+- Quickly you can get to book our any service, and you will be served.
+- Authorization is strong enough that anyone can not secure data.
+- Google and Git Hub authentication is provided, so no time waste on registration.
+
+## List of technologies (frameworks, libraries)
+
+- React
+- Tailwind CSS
+- DaisyUI
+- React-router-dom
+- React-icons
+- React-loader-spinner
+- React-responsive-carousal
+- Firebase
+- React-photo-view
+- React-toastify
+- React-icons
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
