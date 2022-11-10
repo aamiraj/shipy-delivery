@@ -17,7 +17,7 @@ const ServiceDetails = () => {
     fetch(`http://localhost:5000/reviews/${_id}`)
       .then((res) => res.json())
       .then((data) => setReviews(data));
-  }, [_id]);
+  }, [_id, reviews]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -43,12 +43,7 @@ const ServiceDetails = () => {
       body: JSON.stringify(newReview),
     })
       .then((res) => res.json())
-      .then((data) => {
-        if (data.insertedId) {
-          const newReviews = [newReview, ...reviews];
-          setReviews(newReviews);
-        }
-      });
+      .then((data) => console.log(data));
     form.reset();
   };
 
@@ -79,7 +74,7 @@ const ServiceDetails = () => {
         <p className="w-4/5 mx-auto text-start text-2xl font-bold">Reviews</p>
         <div className="w-4/5 mx-auto border-2 rounded p-4">
           {reviews.map((rev) => (
-            <Review key={rev._id.toString()} review={rev}></Review>
+            <Review key={rev?._id.toString()} review={rev}></Review>
           ))}
           {user?.uid ? (
             <form onSubmit={handleSubmit} className="form-control">

@@ -1,7 +1,7 @@
 import React from "react";
 
 const Review = (props) => {
-  const { name, review, rating, photo, date } = props.review;
+  const { name, email, review, rating, photo, date } = props.review;
   const d = new Date(date);
   const dateString = d.toDateString();
   return (
@@ -13,7 +13,7 @@ const Review = (props) => {
           style={{ width: "32px", height: "32px" }}
           alt={name}
         />
-        <p className="text-md font-bold">{name}</p>
+        <p className="text-md font-bold">{name || email}</p>
         <p>{dateString}</p>
       </div>
       <span className="font-bold">Said: </span>
