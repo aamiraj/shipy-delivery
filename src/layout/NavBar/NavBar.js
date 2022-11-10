@@ -55,6 +55,16 @@ const NavBar = () => {
                 Home
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "text-amber-500" : undefined
+                }
+                to="/blogs"
+              >
+                Blogs
+              </NavLink>
+            </li>
             <li tabIndex={0}>
               <NavLink
                 to="/services"
@@ -128,6 +138,16 @@ const NavBar = () => {
               to="/home"
             >
               Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "text-amber-500" : undefined
+              }
+              to="/blogs"
+            >
+              Blogs
             </NavLink>
           </li>
           <li tabIndex={0}>
