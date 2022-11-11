@@ -21,23 +21,25 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch(`http://localhost:5000/services?limit=3`),
+        loader: () =>
+          fetch(`https://shipy-server-app.vercel.app/services?limit=3`),
       },
       {
         path: "/home",
         element: <Home />,
-        loader: () => fetch(`http://localhost:5000/services?limit=3`),
+        loader: () =>
+          fetch(`https://shipy-server-app.vercel.app/services?limit=3`),
       },
       {
         path: "/services",
         element: <Services />,
-        loader: () => fetch(`http://localhost:5000/services`),
+        loader: () => fetch(`https://shipy-server-app.vercel.app/services`),
       },
       {
         path: "/services/:id",
         element: <ServiceDetails />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(`https://shipy-server-app.vercel.app/services/${params.id}`),
       },
       {
         path: "/log-in",
@@ -54,7 +56,7 @@ const router = createBrowserRouter([
             <MyReviews />
           </Private>
         ),
-        loader: () => fetch(`http://localhost:5000/services`),
+        loader: () => fetch(`https://shipy-server-app.vercel.app/services`),
       },
       {
         path: "/add-services",
@@ -72,7 +74,7 @@ const router = createBrowserRouter([
         path: "/edit-review/:id",
         element: <EditReview></EditReview>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/edit-review/${params.id}`),
+          fetch(`https://shipy-server-app.vercel.app/edit-review/${params.id}`),
       },
     ],
   },

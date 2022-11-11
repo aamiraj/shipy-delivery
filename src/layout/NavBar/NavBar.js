@@ -17,7 +17,7 @@ const NavBar = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/services")
+    fetch("https://shipy-server-app.vercel.app/services")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, [services]);

@@ -31,7 +31,7 @@ const LogIn = () => {
         };
 
         // get jwt token
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://shipy-server-app.vercel.app/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -71,7 +71,7 @@ const LogIn = () => {
         };
 
         // get jwt token
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://shipy-server-app.vercel.app/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -102,7 +102,7 @@ const LogIn = () => {
         };
 
         // get jwt token
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://shipy-server-app.vercel.app/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
