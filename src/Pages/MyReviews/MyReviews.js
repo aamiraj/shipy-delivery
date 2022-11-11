@@ -5,11 +5,12 @@ import { AuthContext } from "../../contexts/UserContext";
 import useTitle from "../../hooks/useTitle";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Oval } from "react-loader-spinner";
 
 const MyReviews = () => {
   const [myReviews, setMyReviews] = useState([]);
   const services = useLoaderData();
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut, isLoading, setLoading } = useContext(AuthContext);
   useTitle("My reviews");
 
   useEffect(() => {
@@ -25,18 +26,22 @@ const MyReviews = () => {
         return res.json();
       })
       .then((data) => setMyReviews(data));
-  }, [user, logOut]);
+  }, [user, logOut, setLoading]);
 
   const notify = () => toast("You have deleted successfully!");
 
   const deleteItem = (id) => {
+    setLoading(true);
     fetch(`http://localhost:5000/my-reviews/${id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("access-token")}`,
       },
     })
-      .then((res) => res.json())
+      .then((res) => {
+        setLoading(false);
+        return res.json();
+      })
       .then((data) => {
         if (data.deletedCount) {
           const remainingItems = myReviews.filter((myrev) => myrev._id !== id);
@@ -48,6 +53,22 @@ const MyReviews = () => {
 
   return (
     <div className="w-4/5 mx-auto border-2 rounded p-4 my-8">
+      {isLoading && (
+        <div className="w-16 absolute top-1/2 left-1/2">
+          <Oval
+            height={80}
+            width={80}
+            color="#4fa94d"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+            ariaLabel="oval-loading"
+            secondaryColor="#4fa94d"
+            strokeWidth={2}
+            strokeWidthSecondary={2}
+          />
+        </div>
+      )}
       <ToastContainer></ToastContainer>
       <div className="flex justify-start items-center gap-4 my-2">
         <img

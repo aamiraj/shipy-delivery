@@ -18,7 +18,7 @@ const EditReview = () => {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("genius-token")}`,
+        authorization: `Bearer ${localStorage.getItem("access-token")}`,
       },
       body: JSON.stringify({ review: review, date: dateISO }),
     });

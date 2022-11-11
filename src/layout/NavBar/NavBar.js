@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Logo from "../../assets/logo-shipy.png";
 import { AuthContext } from "../../contexts/UserContext";
 import { FaUserAlt } from "react-icons/fa";
@@ -7,10 +7,14 @@ import { FaUserAlt } from "react-icons/fa";
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [services, setServices] = useState([]);
+  const navigate = useNavigate();
+
   //console.log(user);
   const handleLogOut = () => {
     logOut()
-      .then()
+      .then(() => {
+        navigate("/home");
+      })
       .catch((error) => {
         console.log(error.message);
       });
