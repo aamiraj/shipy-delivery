@@ -14,11 +14,14 @@ const MyReviews = () => {
   useTitle("My reviews");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/my-reviews?email=${user.email}`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("access-token")}`,
-      },
-    })
+    fetch(
+      `https://shipy-server-app.vercel.app/my-reviews?email=${user.email}`,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        },
+      }
+    )
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
           return logOut();
@@ -32,7 +35,7 @@ const MyReviews = () => {
 
   const deleteItem = (id) => {
     setLoading(true);
-    fetch(`http://localhost:5000/my-reviews/${id}`, {
+    fetch(`https://shipy-server-app.vercel.app/my-reviews/${id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("access-token")}`,

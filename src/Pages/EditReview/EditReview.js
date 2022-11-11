@@ -14,7 +14,7 @@ const EditReview = () => {
     const d = new Date();
     const dateISO = d.toISOString();
 
-    fetch(`http://localhost:5000/edit-review/${_id}`, {
+    fetch(`https://shipy-server-app.vercel.app/edit-review/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

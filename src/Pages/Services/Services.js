@@ -9,7 +9,7 @@ const Services = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:5000/services`)
+    fetch(`https://shipy-server-app.vercel.app/services`)
       .then((res) => {
         setLoading(false);
         return res.json();
