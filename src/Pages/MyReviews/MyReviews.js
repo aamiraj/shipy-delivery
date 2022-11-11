@@ -13,7 +13,11 @@ const MyReviews = () => {
   useTitle("My reviews");
 
   useEffect(() => {
-    fetch(`https://shipy-server-app.vercel.app/my-reviews?email=${user.email}`)
+    fetch(`http://localhost:5000/my-reviews?email=${user.email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("access-token")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => setMyReviews(data));
   }, [user]);
@@ -21,7 +25,7 @@ const MyReviews = () => {
   const notify = () => toast("You have deleted successfully!");
 
   const deleteItem = (id) => {
-    fetch(`https://shipy-server-app.vercel.app/my-reviews/${id}`, {
+    fetch(`http://localhost:5000/my-reviews/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

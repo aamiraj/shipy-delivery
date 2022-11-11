@@ -14,7 +14,7 @@ const ServiceDetails = () => {
   useTitle(name);
 
   useEffect(() => {
-    fetch(`https://shipy-server-app.vercel.app/reviews/${_id}`)
+    fetch(`http://localhost:5000/reviews/${_id}`)
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, [_id, reviews]);
@@ -37,7 +37,7 @@ const ServiceDetails = () => {
       date: dateISO,
     };
 
-    fetch(`https://shipy-server-app.vercel.app/review`, {
+    fetch(`http://localhost:5000/review`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newReview),

@@ -31,7 +31,7 @@ const LogIn = () => {
         };
 
         // get jwt token
-        fetch("https://shipy-server-app.vercel.app/jwt", {
+        fetch("http://localhost:5000/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -42,8 +42,8 @@ const LogIn = () => {
           .then((data) => {
             //console.log(data);
             // saved to local storage
-            localStorage.setItem("genius-token", data.token);
-            navigate(from, { replace: true });
+            localStorage.setItem("access-token", data.token);
+            //navigate(from, { replace: true });
           });
         // navigate(from, { replace: true });
       })
@@ -53,15 +53,6 @@ const LogIn = () => {
       });
   };
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (user) {
-        navigate(from, { replace: true });
-      }
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, [user, navigate, from]);
-
   const handleGoogleLogIn = () => {
     googleLogIn()
       .then((userCredential) => {
@@ -70,8 +61,10 @@ const LogIn = () => {
           email: user.email,
         };
 
+        //console.log(currentUser);
+
         // get jwt token
-        fetch("https://shipy-server-app.vercel.app/jwt", {
+        fetch("http://localhost:5000/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -82,8 +75,8 @@ const LogIn = () => {
           .then((data) => {
             //console.log(data);
             // saved to local storage
-            localStorage.setItem("genius-token", data.token);
-            navigate(from, { replace: true });
+            localStorage.setItem("access-token", data.token);
+            //navigate(from, { replace: true });
           });
         // navigate(from, { replace: true });
       })
@@ -102,7 +95,7 @@ const LogIn = () => {
         };
 
         // get jwt token
-        fetch("https://shipy-server-app.vercel.app/jwt", {
+        fetch("http://localhost:5000/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -113,8 +106,8 @@ const LogIn = () => {
           .then((data) => {
             //console.log(data);
             // saved to local storage
-            localStorage.setItem("genius-token", data.token);
-            navigate(from, { replace: true });
+            localStorage.setItem("access-token", data.token);
+            //navigate(from, { replace: true });
           });
         // navigate(from, { replace: true });
       })
@@ -123,6 +116,15 @@ const LogIn = () => {
         setError(errorMessage);
       });
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (user) {
+        navigate(from, { replace: true });
+      }
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [user, navigate, from]);
 
   return (
     <div className="w-11/12 h-auto md:w-1/2 mx-auto border rounded-md shadow-lg hover:shadow-2xl p-5 my-8">

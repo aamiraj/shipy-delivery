@@ -24,7 +24,7 @@ const AddService = () => {
       rating: rating,
     };
 
-    fetch(`https://shipy-server-app.vercel.app/add-service`, {
+    fetch(`http://localhost:5000/add-service`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newService),
