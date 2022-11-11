@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 const MyReviews = () => {
   const [myReviews, setMyReviews] = useState([]);
   const services = useLoaderData();
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   useTitle("My reviews");
 
   useEffect(() => {
@@ -18,15 +18,23 @@ const MyReviews = () => {
         authorization: `Bearer ${localStorage.getItem("access-token")}`,
       },
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          return logOut();
+        }
+        return res.json();
+      })
       .then((data) => setMyReviews(data));
-  }, [user]);
+  }, [user, logOut]);
 
   const notify = () => toast("You have deleted successfully!");
 
   const deleteItem = (id) => {
     fetch(`http://localhost:5000/my-reviews/${id}`, {
       method: "DELETE",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("access-token")}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => {

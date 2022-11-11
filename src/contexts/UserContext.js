@@ -18,7 +18,7 @@ const gitHubProvider = new GithubAuthProvider();
 
 const UserContext = ({ children }) => {
   const [user, setUser] = useState();
-  const [isLoading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(false);
 
   const register = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -37,6 +37,7 @@ const UserContext = ({ children }) => {
   };
 
   const logOut = () => {
+    localStorage.removeItem("access-token");
     return signOut(auth);
   };
 
@@ -59,6 +60,7 @@ const UserContext = ({ children }) => {
         gitHubLogIn,
         logOut,
         isLoading,
+        setLoading,
       }}
     >
       {children}
